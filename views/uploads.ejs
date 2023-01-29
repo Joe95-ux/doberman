@@ -1,0 +1,62 @@
+<%- include("partials/header") %>
+<div id="main-container" class="login-register-upload" >
+    <h1 class="upload-heading">Upload new puppies here!</h1>
+    <div class="inner-container main-container form-wrapper upload-form-wrapper">
+        <div class="conatiner-grid">
+            <div class="info-left">
+                <div class="banner">
+                </div>
+                <div class="banner-text">
+                    <h2>Allhomesdobermanpinchers!</h2>
+                </div>
+
+            </div>
+            <div class="about-main">
+                <form action="/uploads" method="POST" class="upload-form" enctype="multipart/form-data">
+                    <div class="input">
+                        <label for="name">Name</label>
+                        <input type="text" name="name" placeholder="puppy's name">
+                    </div>
+                    <div class="input">
+                        <label for="age">Age</label>
+                        <input type="text" name="age" placeholder="puppy's age">
+                    </div>
+                    <div class="input">
+                        <label for="sex">Sex</label>
+                        <input type="text" name="sex" placeholder="puppy's sex">
+                    </div>
+                    <div class="input">
+                        <label for="vaccination">vaccination</label>
+                        <input type="text" name="vaccination" placeholder="vaccination status">
+                    </div>
+                    <div class="input">
+                        <label for="price">Price</label>
+                        <input type="text" name="price" placeholder="price">
+                    </div>
+                    <div class="input">
+                        <label for="rating">Rating</label>
+                        <input type="number" name="rating" placeholder="rating">
+                    </div>
+                    <div class="input">
+                        <label for="description">Description</label>
+                        <textarea name="description" cols="5" rows="5"
+                            placeholder="describe puppy"></textarea>
+                    </div>
+                    <div class="input">
+                        <label for="image">Image</label>
+                        <input type="file" placeholder="select image" name="photo">
+                    </div>
+                    <button class="contact-btn footer-btn" type="submit">Submit</button>
+                    <a class="btn btn-light btn-lg" id="logout-btn" href="/logout" role="button">Log Out</a>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+
+
+<%- include("partials/footer") %>

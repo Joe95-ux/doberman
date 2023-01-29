@@ -1,0 +1,47 @@
+<%- include("partials/header") %>
+<div id="main-container" class="login-register-upload">
+    <h1 class="upload-heading">Register to Upload new puppies here!</h1>
+    <div class="inner-container main-container register-container form-wrapper">
+        <div class="conatiner-grid register-grid">
+            <div class="info-left register-info">
+                <div class="banner">
+                </div>
+                <div class="banner-text">
+                    <h2>Allhomesdobermanpinchers!</h2>
+                </div>
+
+            </div>
+            <div class="about-main register-form">
+                <form action="/register" method="POST" id="form" class="upload-form register-form">
+                    <h6>Register</h6>
+                    <div class="input-field">
+                        <label for="email">username</label>
+                        <input type="email" name="username" id="email" placeholder="email" autocomplete="off">
+                        <small>Error Message</small>
+                    </div>
+                    <div class="input-field">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password" placeholder="enter password" >
+                        <small>Error Message</small>
+                    </div>
+                    <div class="input-field">
+                        <label for="password">Secret Token</label>
+                        <input type="password" name="token" id="token" placeholder="provide a secret token" >
+                        <small>Error Message</small>
+                    </div>
+                    <button class="contact-btn footer-btn" type="submit">Register</button>
+                    <p>Already registered? <a href="/login">Login here.</a></p>
+                </form>
+            </div>
+            <div class="float red"></div>
+            <div class="float primary"></div>
+
+        </div>
+    </div>
+
+</div>
+
+
+
+
+<%- include("partials/footer") %>

@@ -1,0 +1,245 @@
+<%- include("partials/header") %>
+<section id="checkout-section">
+    <div class="puppy-wrapper-enclosure">
+        <h1><%= puppy.name %> </h1>
+        <hr>
+        <div class="checkout">
+            <%if (puppy.photo){%>
+            <div class="display-image">
+                
+                <img src="<%= puppy.photo%>" alt=<%= puppy.name %> class="puppy-img">
+            </div>
+            <% } %>
+            <div class="pup-details">
+                <h2 class="section-title">Description</h2>
+                <hr class="description-rule">
+                <p><span class="property">Name</span> <%= puppy.name %> </p>
+                <p><span class="property">Sex</span> <%= puppy.sex %> </p>
+                <p><span class="property">Age</span> <%= puppy.age %> old</p>
+                <p><span class="property">Vaccination</span> <%= puppy.vaccination %> </li>
+                    <p class="last-property"><span class="property">Price</span> <%= puppy.price %> </p>
+                    <div class="purchase-btns">
+                        <button class="purchase-btn open">Ask About Me</button>
+                        <a href="sms:+61881214373?&body=Hello there! I'd like to inquire about..." class="purchase-btn"
+                            role="button">Text us!</a>
+                    </div>
+
+            </div>
+        </div>
+        <hr>
+        <div class="pup-bio">
+            <div class="what-clients-say">
+                <div class="what-clients-say-header">
+                    <h3>What our clients say</h3>
+                    <a href="/#client-review">See more reviews<i class="fas fa-chevron-right"></i></a>
+                </div>
+                <div class="clients-review-wrapper">
+                    <div class="client-card">
+                        <div class="card-content-wrapper">
+                            <img src="/images/client1.jpg" alt="golden retriever review">
+                            <div class="client-card-content">
+                                <h4><i class="fas fa-heart"></i>by Sven S.</h4>
+                                <p>Filli is an absolute love. He has a great disposition and appears to be
+                                    perfectly healthy! The process with St. Bernard puppies was straight forward and
+                                    they
+                                    were always
+                                    responsive and helpful when we had questions.</p>
+                            </div>
+                        </div>
+                        <p class="hidden-paragraph">Filli is an absolute love. He has a great disposition and appears to
+                            be
+                            perfectly healthy! The process with St. Bernard puppies was straight forward and
+                            they
+                            were always
+                            responsive and helpful when we had questions.</p>
+
+                    </div>
+                    <div class="client-card">
+                        <div class="card-content-wrapper">
+                            <img src="/images/client2.jpg" alt="golden retriever review">
+                            <div class="client-card-content">
+                                <h4><i class="fas fa-heart"></i>by Becky A.</h4>
+                                <p>All went very good from start to pick up and bringing Lion home!! Allhomesdobermanpinchers
+                                    was
+                                    very communicative, always available and very helpful throughout process. Puppy was
+                                    everything we had hoped and wished for!!</p>
+                            </div>
+
+                        </div>
+                        <p class="hidden-paragraph">All went very good from start to pick up and bringing Lion home!!
+                            Allhomesdobermanpinchers was
+                            very communicative, always available and very helpful throughout process. Puppy was
+                            everything we had hoped and wished for!!</p>
+                    </div>
+                    <div class="client-card">
+                        <div class="card-content-wrapper">
+                            <img src="/images/client3.jpg" alt="golden retriever review">
+                            <div class="client-card-content">
+                                <h4><i class="fas fa-heart"></i>by Martha R.</h4>
+                                <p>This is the second puppy we have gotten from St Bernad Puppies and we'll use them
+                                    again
+                                    if we decide to get another pup. It's just too easy and the communication through
+                                    out
+                                    the process is excellent not to mention the quality of the dogs we have received.
+                                </p>
+                            </div>
+                        </div>
+
+                        <p class="hidden-paragraph">This is the second puppy we have gotten from St Bernad Puppies and
+                            we'll use them again
+                            if we decide to get another pup. It's just too easy and the communication through out
+                            the process is excellent not to mention the quality of the dogs we have received.</p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="bio-wrapper">
+                <div class="bio-about">
+                    <h3>About <%= puppy.name %> </h3>
+                    <p><%= puppy.description  %> </p>
+                </div>
+                <div class="puppy-facts">
+                    <h3>Facts About Golden Retrievers</h3>
+                    <div class="qualities-wrapper">
+                        <div class="range-container">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-bolt fa-stack-1x fa-inverse"></i>
+                            </span>
+                            <div class="range-wrapper">
+                                <div class="quality">
+                                    <p>Energy</p>
+                                    <p><strong>Moderate</strong></p>
+                                </div>
+                                <div class="range-outer">
+                                    <div class="range-inner" style="width: 40%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="range-container">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-dog fa-stack-1x fa-inverse"></i>
+                            </span>
+                            <div class="range-wrapper">
+                                <div class="quality">
+                                    <p>Size</p>
+                                    <p><strong>Large</strong></p>
+                                </div>
+                                <div class="range-outer">
+                                    <div class="range-inner" style="width: 60%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="range-container">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-school fa-stack-1x fa-inverse"></i>
+                            </span>
+                            <div class="range-wrapper">
+                                <div class="quality">
+                                    <p>Trainability</p>
+                                    <p><strong>Accomodating</strong></p>
+                                </div>
+                                <div class="range-outer">
+                                    <div class="range-inner" style="width: 100%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <hr>
+        <% if(puppies){%>
+        <div class="available-puppies">
+            <h1>Available Puppies</h1>
+            <div class="available-pups-wrapper">
+                <% puppies.forEach(pup=>{%>
+                <a href="/puppies/<%=pup._id%>">
+                    <div class="puppy-card">
+                        <img src="<%= pup.photo%>" alt="puppy image">
+                        <h3><%= pup.name %></h3>
+                        <h4>
+                            <span><%= pup.sex %>, </span><%= pup.age %> old
+                        </h4>
+                    </div>
+                </a>
+
+
+                <%}) %>
+
+            </div>
+            <div class="view-all-wrapper"><a href="/#our-puppies" class="view-all">View all Puppies<i
+                        class="fas fa-chevron-right"></i></a></div>
+
+        </div>
+        <%} %>
+
+    </div>
+    <div class="contact-overlay">
+        <div class="fixer">
+            <div class="overlay-inner">
+                <div class="puppy">
+                    <img src="<%= puppy.photo %>" alt=<%= puppy.name %>>
+                    <div class="pup-info">
+                        <h4><span><%= puppy.name %></span> is waiting for you!</h4>
+                        <p><%= puppy.sex %> | <%= puppy.age %></p>
+                        <h6>Doberman Pinscher Puppy</h6>
+                    </div>
+
+                </div>
+                <div class="contact-inquiry-form">
+                    <h2>Finish up and ask about <span class="puppy-name"><%= puppy.name %></span> </h2>
+                    <form class="footer-form">
+                        <div class="names">
+                            <div class="firstname">
+                                <label for="fist-name">First Name</label>
+                                <input type="text" id="fName" name="firstname" required>
+                            </div>
+                            <div class="lastname">
+                                <label for="last-name">Last Name</label>
+                                <input type="text" id="lName" name="lastname" required>
+                            </div>
+                        </div>
+                        <div class="input-field">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="client-email" name="email" required>
+                        </div>
+                        <div class="names">
+                            <div class="firstname">
+                                <label for="phone">Phone</label>
+                                <input type="tel" id="phone" name="phone-number" required>
+                            </div>
+                            <div class="lastname">
+                                <label for="state">State/Province</label>
+                                <input type="text" id="state" name="state/province" required>
+                            </div>
+                        </div>
+                        <div class="input-field">
+                            <textarea name="about-yourself" id="message" cols="5" rows="4"
+                                placeholder="Please, tell us a little about your home and family, so we can do our best to match you with the right puppy."
+                                required></textarea>
+                        </div>
+                        <button type="submit" class="find-btn finish">Submit</button>
+                    </form>
+
+
+                </div>
+
+
+            </div>
+            <div class="close">
+                <i class="fas fa-times "></i>
+            </div>
+        </div>
+
+
+
+    </div>
+
+</section>
+
+
+<%- include("partials/footer") %>
