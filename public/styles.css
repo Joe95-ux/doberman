@@ -77,7 +77,6 @@ body {
 .logo-container {
   position: relative;
   width: 140px;
-  height: 5rem;
   transform: scale(1);
   transform-origin: left;
   transition: all 500ms ease;
@@ -2327,7 +2326,6 @@ a.whats-app{
   margin-bottom: 1.5rem;
   position: relative;
   width: 105.11px;
-  height: 5rem;
   background-color: inherit;
 }
 
