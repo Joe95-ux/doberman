@@ -26,7 +26,7 @@ let smtpTransport = nodemailer.createTransport({
 
 const sendMail = (email, subject, text, cb) => {
   let mailOptions = {
-    to: "saintbenardpuppies@gmail.com",
+    to: "info@everlandpuppies.com",
     from: email,
     subject: subject,
     text:text
