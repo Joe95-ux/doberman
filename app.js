@@ -237,6 +237,7 @@ app.post("/email", function (req, res) {
   const body = fname + "," + lname + "," + phone + "," + state + "," + text;
   const subject = "Inquiry on puppy";
   sendMail(email, subject, body, function (err, data) {
+    console.log(body)
     if (err) {
       res.status(500).json({
         message: "Internal Error",

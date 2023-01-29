@@ -3,13 +3,6 @@ require("dotenv").config();
 const nodemailer = require("nodemailer");
 const mailGun = require("nodemailer-mailgun-transport");
 
-const auth = {
-  auth: {
-    api_key: process.env.API_KEY,
-    domain: process.env.DOMAIN
-  }
-};
-
 //create transporter
 
 let smtpTransport = nodemailer.createTransport({

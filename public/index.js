@@ -36,24 +36,27 @@ window.addEventListener("scroll", function() {
   nav.classList.toggle("scrolling-active", windowPosition);
 });
 
-
-
 // footer
 
 const currentYear = new Date().getFullYear();
 const copyrightYear = document.querySelector(".year");
 copyrightYear.innerHTML = currentYear;
+const closeBtn = document.querySelector(".close");
+const modal = document.querySelector(".contact-overlay");
+const openModal = document.querySelector(".open");
 
 // email form using jquery
 
 $(".footer-form").on("submit", e => {
+  e.preventDefault();
   const email = $("#client-email").val().trim();
   const fname = $("#fName").val().trim();
   const lname = $("#lName").val().trim();
   const phone = $("#phone").val().trim();
   const state = $("#state").val().trim();
   const text = $("#message").val().trim();
-
+  let form = $(".footer-form"),
+    url = form.attr("action");
   let data = {
     email,
     fname,
@@ -62,18 +65,15 @@ $(".footer-form").on("submit", e => {
     state,
     text
   };
-  console.log(data);
 
-  $.post("/email", data, function() {
+  $.post(url, data, function() {
     console.log("server received our data");
   });
+
+ 
 });
 
 // close modal
-
-const closeBtn = document.querySelector(".close");
-const modal = document.querySelector(".contact-overlay");
-const openModal = document.querySelector(".open");
 
 if (closeBtn !== null) {
   closeBtn.addEventListener("click", () => {

@@ -17,7 +17,7 @@
                 <p><span class="property">Sex</span> <%= puppy.sex %> </p>
                 <p><span class="property">Age</span> <%= puppy.age %> old</p>
                 <p><span class="property">Vaccination</span> <%= puppy.vaccination %> </li>
-                    <p class="last-property"><span class="property">Price</span> <%= puppy.price %> </p>
+                    <p class="last-property"><span class="property">Price</span> $<%= puppy.price %> </p>
                     <div class="purchase-btns">
                         <button class="purchase-btn open">Ask About Me</button>
                         <a href="sms:+61881214373?&body=Hello there! I'd like to inquire about..." class="purchase-btn"
@@ -192,7 +192,7 @@
                 </div>
                 <div class="contact-inquiry-form">
                     <h2>Finish up and ask about <span class="puppy-name"><%= puppy.name %></span> </h2>
-                    <form class="footer-form">
+                    <form class="footer-form" action="/email" method="POST">
                         <div class="names">
                             <div class="firstname">
                                 <label for="fist-name">First Name</label>
