@@ -47,31 +47,31 @@ const openModal = document.querySelector(".open");
 
 // email form using jquery
 
-$(".footer-form").on("submit", e => {
-  e.preventDefault();
-  const email = $("#client-email").val().trim();
-  const fname = $("#fName").val().trim();
-  const lname = $("#lName").val().trim();
-  const phone = $("#phone").val().trim();
-  const state = $("#state").val().trim();
-  const text = $("#message").val().trim();
-  let form = $(".footer-form"),
-    url = form.attr("action");
-  let data = {
-    email,
-    fname,
-    lname,
-    phone,
-    state,
-    text
-  };
+// $(".footer-form").on("submit", e => {
+//   e.preventDefault();
+//   const email = $("#client-email").val().trim();
+//   const fname = $("#fName").val().trim();
+//   const lname = $("#lName").val().trim();
+//   const phone = $("#phone").val().trim();
+//   const state = $("#state").val().trim();
+//   const text = $("#message").val().trim();
+//   let form = $(".footer-form"),
+//     url = form.attr("action");
+//   let data = {
+//     email,
+//     fname,
+//     lname,
+//     phone,
+//     state,
+//     text
+//   };
 
-  $.post(url, data, function() {
-    console.log("server received our data");
-  });
+//   $.post(url, data, function() {
+//     console.log("server received our data");
+//   });
 
  
-});
+// });
 
 // close modal
 

@@ -192,7 +192,7 @@
                 </div>
                 <div class="contact-inquiry-form">
                     <h2>Finish up and ask about <span class="puppy-name"><%= puppy.name %></span> </h2>
-                    <form class="footer-form" action="/email" method="POST">
+                    <form class="footer-form" action="/email" method="post">
                         <div class="names">
                             <div class="firstname">
                                 <label for="fist-name">First Name</label>
@@ -210,11 +210,11 @@
                         <div class="names">
                             <div class="firstname">
                                 <label for="phone">Phone</label>
-                                <input type="tel" id="phone" name="phone-number" required>
+                                <input type="tel" id="phone" name="phone-number" >
                             </div>
                             <div class="lastname">
                                 <label for="state">State/Province</label>
-                                <input type="text" id="state" name="state/province" required>
+                                <input type="text" id="state" name="state/province" >
                             </div>
                         </div>
                         <div class="input-field">

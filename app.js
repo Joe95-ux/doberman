@@ -28,15 +28,10 @@ const app = express();
 
 app.use(
   express.urlencoded({
-    extended: true,
+    extended: true
   })
 );
 app.use(express.json());
-app.use(
-  express.json({
-    type: "application/json",
-  })
-);
 
 app.set("view engine", "ejs");
 
@@ -74,8 +69,8 @@ app.use(
     saveUninitialized: false,
     store: MongoStore.create({
       mongoUrl: process.env.MONGO_URI,
-      mongoOptions: { useUnifiedTopology: true },
-    }),
+      mongoOptions: { useUnifiedTopology: true }
+    })
   })
 );
 
@@ -90,12 +85,12 @@ const User = require("./models/user");
 
 //passport local configurations.
 passport.use(User.createStrategy());
-passport.serializeUser(function (user, done) {
+passport.serializeUser(function(user, done) {
   done(null, user.id);
 });
 
-passport.deserializeUser(function (id, done) {
-  User.findById(id, function (err, user) {
+passport.deserializeUser(function(id, done) {
+  User.findById(id, function(err, user) {
     done(err, user);
   });
 });
@@ -109,18 +104,15 @@ passport.deserializeUser(function (id, done) {
 //     }
 // }
 
-app.get("/",   async (req, res) =>{
-  try{
+app.get("/", async (req, res) => {
+  try {
     const puppies = await Pup.find({});
     res.render("home", {
-      allPuppies: puppies,
+      allPuppies: puppies
     });
-
-
-  }catch(e){
-    console.log(e)
+  } catch (e) {
+    console.log(e);
   }
-
 });
 
 app.post("/uploads", upload.single("photo"), ensureAuth, async (req, res) => {
@@ -128,8 +120,8 @@ app.post("/uploads", upload.single("photo"), ensureAuth, async (req, res) => {
   try {
     req.body.user = req.user.id;
     post = req.body;
-    if(req.file){
-      post.photo = req.file.location
+    if (req.file) {
+      post.photo = req.file.location;
     }
     await Pup.create(post);
     res.redirect("/");
@@ -141,40 +133,42 @@ app.post("/uploads", upload.single("photo"), ensureAuth, async (req, res) => {
 app.get("/puppies/:id", async (req, res) => {
   const requestedPuppy = req.params.id;
   const pups = await Pup.find({});
-  let availPups = pups.filter(pup=>pup._id != requestedPuppy);
-  availPups = availPups.slice(0,4);
+  let availPups = pups.filter(pup => pup._id != requestedPuppy);
+  availPups = availPups.slice(0, 4);
   let puppy = await Pup.findOne({ _id: requestedPuppy });
   if (puppy) {
-    res.render("puppy", { puppy: puppy, puppies:availPups });
+    res.render("puppy", { puppy: puppy, puppies: availPups });
   } else {
     res.redirect("/");
   }
 });
 
-app.get("/about", function (req, res) {
+app.get("/about", function(req, res) {
   res.render("about");
 });
 
-app.get("/admin", ensureGuest, function (req, res) {
+app.get("/admin", ensureGuest, function(req, res) {
   res.render("admin");
 });
 
-app.get("/register", ensureGuest, function (req, res) {
+app.get("/register", ensureGuest, function(req, res) {
   res.render("register");
 });
 
-app.get("/login", ensureGuest, function (req, res) {
+app.get("/login", ensureGuest, function(req, res) {
   res.render("login");
 });
 
-app.get('/logout', function(req, res, next) {
+app.get("/logout", function(req, res, next) {
   req.logout(function(err) {
-    if (err) { return next(err); }
-    res.redirect('/');
+    if (err) {
+      return next(err);
+    }
+    res.redirect("/");
   });
 });
 
-app.get("/uploads", function (req, res) {
+app.get("/uploads", function(req, res) {
   if (req.isAuthenticated()) {
     res.render("uploads");
   } else {
@@ -182,45 +176,44 @@ app.get("/uploads", function (req, res) {
   }
 });
 
-app.get("/contact", function (req, res) {
+app.get("/contact", function(req, res) {
   res.render("contact");
 });
 
-app.get("/privacy", function (req, res) {
+app.get("/privacy", function(req, res) {
   res.render("privacy", {
-    listTitle: "Privacy Policy",
+    listTitle: "Privacy Policy"
   });
 });
 
-app.get("/shipping", function (req, res) {
+app.get("/shipping", function(req, res) {
   res.render("shipping", {
-    listTitle: "Shipping",
+    listTitle: "Shipping"
   });
 });
 
-app.post("/register", ensureToken, function (req, res) {
-  User.register(
-    { username: req.body.username },
-    req.body.password,
-    function (err, user) {
-      if (err) {
-        console.log(err);
-        res.redirect("/register");
-      } else {
-        passport.authenticate("local")(req, res, function () {
-          res.redirect("/uploads");
-        });
-      }
+app.post("/register", ensureToken, function(req, res) {
+  User.register({ username: req.body.username }, req.body.password, function(
+    err,
+    user
+  ) {
+    if (err) {
+      console.log(err);
+      res.redirect("/register");
+    } else {
+      passport.authenticate("local")(req, res, function() {
+        res.redirect("/uploads");
+      });
     }
-  );
+  });
 });
 
-app.post("/login", function (req, res) {
+app.post("/login", function(req, res) {
   const user = new User({
     username: req.body.username,
-    passsword: req.body.password,
+    passsword: req.body.password
   });
-  req.login(user, function (err) {
+  req.login(user, function(err) {
     if (err) {
       console.log(err);
     } else {
@@ -231,29 +224,22 @@ app.post("/login", function (req, res) {
   });
 });
 
-app.post("/email", function (req, res) {
+app.post("/email", async function(req, res, next) {
   //send email here.
   const { email, fname, lname, phone, state, text } = req.body;
-  const body = fname + "," + lname + "," + phone + "," + state + "," + text;
-  const subject = "Inquiry on puppy";
-  sendMail(email, subject, body, function (err, data) {
-    console.log(body)
-    if (err) {
-      res.status(500).json({
-        message: "Internal Error",
-      });
-    } else {
-      res.json({
-        message: "Email sent",
-      });
-    }
-  });
+  const subject = "Enquiry on puppy";
+  try {
+    await sendMail(email, fname, lname, phone, state, text);
+    res.send("Message sent successfully") 
+  } catch (error) {
+    res.send("Message could not be sent");
+  }
 });
 
 let port = process.env.PORT;
 if (port == null || port == "") {
   port = 9000;
 }
-app.listen(port, function () {
+app.listen(port, function() {
   console.log("Server has started sucessfully");
 });
