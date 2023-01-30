@@ -9,13 +9,14 @@ const session = require("express-session");
 const passport = require("passport");
 const passportLocalMongoose = require("passport-local-mongoose");
 const _ = require("lodash");
-const sendMail = require("./mail");
+const mainMail = require("./mail");
 const fs = require("fs");
 const { S3Client, AbortMultipartUploadCommand } = require("@aws-sdk/client-s3");
 const multerS3 = require("multer-s3");
 const multer = require("multer");
 const path = require("path");
 const MongoStore = require("connect-mongo");
+const flash = require("connect-flash");
 const connectDB = require("./config/db");
 // const pups = require(__dirname + "/data.js");
 const { getMaxListeners } = require("process");
@@ -65,6 +66,7 @@ const upload = multer({
 app.use(
   session({
     secret: process.env.SECRET,
+    cookie: {maxAge: 60000*60*24},
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({
@@ -76,6 +78,15 @@ app.use(
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(flash());
+
+// Set Global variable
+app.use(function(req, res, next){
+  res.locals.user = req.user || null;
+  res.locals.messages = req.flash();
+  next();
+})
 
 mongoose.set("useCreateIndex", true);
 
@@ -226,13 +237,17 @@ app.post("/login", function(req, res) {
 
 app.post("/email", async function(req, res, next) {
   //send email here.
-  const { email, fname, lname, phone, state, text } = req.body;
+  let { email, firstname, lastname, phone, state, about } = req.body;
   const subject = "Enquiry on puppy";
   try {
-    await sendMail(email, fname, lname, phone, state, text);
-    res.send("Message sent successfully") 
+    await mainMail(email, subject, firstname, lastname, phone, state, about);
+    req.flash("success", "Your message was sent successfully. We will get back to you shortly!")
+    res.redirect("/")
+    // res.send("Congratulations! Your Message was sent successfully") 
   } catch (error) {
-    res.send("Message could not be sent");
+    req.flash("error", "Oops! there was an error while sending your message. Please try again.")
+    res.redirect("/")
+    console.log(error)
   }
 });
 

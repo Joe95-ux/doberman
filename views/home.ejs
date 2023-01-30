@@ -64,6 +64,24 @@
 <section id="our-puppies">
   <div class="wrapper-enclosure">
     <div class="section-title">
+      <% if(messages){%>
+        <% if(messages.error){%>
+        <div class="flash-wrapper home-flash">
+            <div class="flash-message warning">
+                <h5 class="flash-error"><%=messages.error[0]%> </h5>
+            </div>
+        </div>
+
+        <%}%>
+                <%if(messages.success){ %>
+        <div class="flash-wrapper home-flash">
+            <div class="flash-message success-info">
+                <h5 class="flash-success"><%=messages.success[0]%></h5>
+            </div>
+        </div>
+
+        <% } %>
+        <% } %>
       <h2 class="product-title">our beautiful puppies</h2>
       <p>
         It is our profound pleasure to present to you these beautiful Doberman

@@ -1,28 +1,27 @@
 // jshint esversion:6
 require("dotenv").config();
-const nodemailer = require("nodemailer");
-const mailGun = require("nodemailer-mailgun-transport");
+const nodemail = require("nodemailer");
 
 //create transporter
 
-async function sendMail(email, subject, fname, lname, phone, state, text) {
-  let smtpTransport = await nodemailer.createTransport({
-    host: "smtp.zoho.com",
+async function mainMail(email, subject, fname, lname, phone, state, text) {
+  const smtpTransport = nodemail.createTransport({
+    service:'Zoho',
+    host: 'smtp.zoho.com',
     port: 465,
     secure: true, // use SSL
     auth: {
-      type: "login",
+      type:'login',
       user: process.env.ZOHO_USER,
       pass: process.env.ZOHO_PASS
     }
   });
-
-  let mailOptions = {
-    from: email,
-    to: "info@everlandpuppies.com",
+  let mailOption = {
+    to: process.env.ZOHO_USER,
+    from: process.env.ZOHO_INFO,
     subject: subject,
     html: `You got a message from
-    Email: email
+    Email: ${email}
     name: ${fname} ${lname}
     phone: ${phone}
     state: ${state}
@@ -30,11 +29,12 @@ async function sendMail(email, subject, fname, lname, phone, state, text) {
     `
   };
   try {
-    await smtpTransport.sendMail(mailOptions);
+    await smtpTransport.sendMail(mailOption);
     return Promise.resolve("Message sent successfully")
   } catch (err) {
+    console.log(err)
     return Promise.reject(err)
   }
 }
 
-module.exports = sendMail;
+module.exports = mainMail;

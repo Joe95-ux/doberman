@@ -2486,3 +2486,35 @@ button.footer-btn {
 .last-link:hover {
   color: var(--mainGrey);
 }
+
+.flash-wrapper{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.flash-message{
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background-color: var(--mainWhite);
+  border-radius: 5px;
+  font-size: 16px;
+  max-width: fit-content;
+  color: var(--primaryColor);
+}
+
+.flash-wrapper.home-flash{
+  margin: -1rem 0 3rem;
+}
+
+.flash-wrapper.home-flash .flash-message{
+  margin: 0;
+}
+.flash-message.warning{
+  border: 1px solid red;
+}
+
+.flash-message.success-info{
+  border: 1px solid #0069FF;
+}
+

@@ -6,7 +6,7 @@
         <div class="checkout">
             <%if (puppy.photo){%>
             <div class="display-image">
-                
+
                 <img src="<%= puppy.photo%>" alt=<%= puppy.name %> class="puppy-img">
             </div>
             <% } %>
@@ -210,15 +210,15 @@
                         <div class="names">
                             <div class="firstname">
                                 <label for="phone">Phone</label>
-                                <input type="tel" id="phone" name="phone-number" >
+                                <input type="tel" id="phone" name="phone">
                             </div>
                             <div class="lastname">
                                 <label for="state">State/Province</label>
-                                <input type="text" id="state" name="state/province" >
+                                <input type="text" id="state" name="state">
                             </div>
                         </div>
                         <div class="input-field">
-                            <textarea name="about-yourself" id="message" cols="5" rows="4"
+                            <textarea name="about" id="message" cols="5" rows="4"
                                 placeholder="Please, tell us a little about your home and family, so we can do our best to match you with the right puppy."
                                 required></textarea>
                         </div>
