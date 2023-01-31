@@ -1771,6 +1771,7 @@ textarea {
   display: block;
   text-align: center;
   border-radius: 40px 0 40px 40px;
+  min-width: 182px;
   background-position: center;
   border: 1.5px solid #fff;
   overflow: hidden;
