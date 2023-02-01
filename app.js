@@ -214,6 +214,10 @@ app.get("/shipping", function(req, res) {
   });
 });
 
+app.get("/testimonials", async(req, res)=>{
+  res.render("testimonials");
+})
+
 app.post("/register", ensureToken, function(req, res) {
   User.register({ username: req.body.username }, req.body.password, function(
     err,

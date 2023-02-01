@@ -2377,6 +2377,11 @@ a.whats-app{
   max-height: 100%;
 }
 
+.footer-privacy a{
+  text-decoration: underline;
+  color: #ccc;
+}
+
 .payment-methods {
   display: flex;
   flex-direction: column;
@@ -2557,5 +2562,65 @@ button.footer-btn {
 
 .flash-message.success-info{
   border: 1px solid #0069FF;
+}
+
+/* testimonials main page */
+.testimonials-center{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  column-gap: 2rem;
+  row-gap: 2rem;
+  width: 100%;
+}
+@media screen and (max-width:534px) {
+  .testimonials-center{
+    grid-template-columns: 1fr;
+    max-width: 100%;
+  }
+  
+}
+.testi-wrapper{
+  padding: 1.5rem;
+  border-radius: 5px;
+  background-color: var(--mainWhite);
+  box-shadow: 0 0 12px rgba(61,99,140,.08);
+  text-align: left;
+  flex-basis: 32%;
+}
+
+.testi-avatar{
+  display: flex;
+  margin-bottom: 1.2rem;
+}
+.testi-avatar img{
+  margin-right: 10px;
+  border-radius: 4px;
+  height: auto;
+  width: auto;
+  max-width: 80px;
+  max-height: 80px;
+  object-fit: cover;
+}
+
+.testi-name{
+  line-height: 1.5;
+}
+.testi-name h3{
+  color: #104909;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+.testi-name h4{
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--secondaryColor);
+  font-weight: normal;
+}
+
+.testi-main{
+  line-height: 1.5;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--secondaryColor);
 }
 
