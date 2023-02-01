@@ -101,8 +101,6 @@ body {
   justify-content: space-between;
   align-items: center;
   /* color: var(--mainWhite); */
-
-  width: 55%;
 }
 
 .nav_links li {
@@ -111,6 +109,10 @@ body {
   transition: opacity 200ms ease-in-out;
   letter-spacing: 1.3px;
   position: relative;
+}
+
+.nav_links li:not(:first-child){
+  margin-left: 2rem;
 }
 
 .nav_links a {
@@ -156,13 +158,13 @@ body {
   transition: all 0.3s ease;
 }
 
-@media screen and (max-width:1024px) {
+/* @media screen and (max-width:1024px) {
   .nav_links {
     width: 65%;
   }
-}
+} */
 
-@media screen and (max-width:765px) {
+@media screen and (max-width:1124px) {
   body {
     overflow-x: hidden;
   }
@@ -183,6 +185,10 @@ body {
     transition: all 0.5s ease-in;
     z-index: -2;
     opacity: 0;
+  }
+ 
+  .nav_links li:not(:first-child){
+    margin-left: 0;
   }
 
   .nav_links li {
@@ -491,6 +497,29 @@ p.para-note {
 
 }
 
+/* breadcrum */
+.break-crum-wrapper{
+  margin-bottom: 3rem;
+  color: var(--secondaryColor);
+  text-align: left;
+  font-family: "Ubuntu", sans-serif;
+}
+
+.break-crum-wrapper span{
+  font-size: 1.3rem;
+  text-transform: capitalize;
+  font-weight: 500;
+}
+
+.break-crum-wrapper a{
+  text-decoration: none;
+  color: var(--secondaryColor);
+  text-decoration: underline;
+}
+.current{
+  color: #104909;
+}
+
 @media screen and (max-width:586px) {
   .puppies-center {
     display: grid;
@@ -502,6 +531,8 @@ p.para-note {
 .section-title {
   position: relative;
 }
+
+
 
 .product-title {
   position: relative;
@@ -534,12 +565,21 @@ p.para-note {
 
 .section-title h2 {
   text-align: center;
+}
+.section-title h2, .catalog-title{
   font-size: 2.5rem;
   font-weight: 700;
-  color: var(--secondaryColor);
+  color: #104909;
   margin-bottom: 5rem;
   text-transform: capitalize;
   letter-spacing: var(--mainSpacing);
+}
+
+h2.catalog-title{
+  text-align: left;
+  font-size: 2rem;
+  margin-bottom: 1.3rem;
+  letter-spacing: 0;
 }
 
 .section-title p {

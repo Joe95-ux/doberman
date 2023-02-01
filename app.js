@@ -126,6 +126,17 @@ app.get("/", async (req, res) => {
   }
 });
 
+app.get("/available-puppies", async (req, res)=>{
+  let puppies;
+  try {
+    puppies = await Pup.find({});
+    res.render("puppies", {allPuppies:puppies});
+  } catch (error) {
+    console.log(error);
+  }
+
+});
+
 app.post("/uploads", upload.single("photo"), ensureAuth, async (req, res) => {
   let post;
   try {
@@ -253,7 +264,7 @@ app.post("/email", async function(req, res, next) {
 
 let port = process.env.PORT;
 if (port == null || port == "") {
-  port = 9000;
+  port = 3000;
 }
 app.listen(port, function() {
   console.log("Server has started sucessfully");

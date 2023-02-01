@@ -1,0 +1,48 @@
+<%- include("partials/header") %>
+
+
+
+
+<section id="our-puppies" style="margin-top: 4rem;">
+    <div class="wrapper-enclosure">
+      <div class="section-title">
+        <div class="break-crum-wrapper">
+            <span><a href="/">Home</a></span>
+            <span>/</span>
+            <span class="current">Available Puppies</span>
+        </div>
+        <h2 class="catalog-title">View Available Puppies</h2>
+        
+      </div>
+      <div class="puppies-center">
+        <% for(let i = 0; i < allPuppies.length; i++){ %>
+  
+        <article class="single-puppy">
+          <div class="img-container">
+            <img src="<%= allPuppies[i].photo%>"alt="<%= allPuppies[i].name %>" class="puppy-img">
+            <a class="buy-me" type="button" href="/puppies/<%=allPuppies[i]._id%>"><i class="fas fa-paw"></i>Buy me</a>
+          </div>
+          <div class="about-puppy">
+            <h3 class="name"><%= allPuppies[i].name %></h3>
+            <hr class="product-rule" />
+            <h4 class="description">
+              <span><%= allPuppies[i].sex %>, </span><%= allPuppies[i].age %> old
+            </h4>
+          </div>
+        </article>
+  
+        <% }; %>
+      </div>
+    </div>
+  
+  
+  </section>
+
+
+
+
+
+<%- include("partials/footer") %>
+
+
+
