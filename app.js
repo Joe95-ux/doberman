@@ -16,6 +16,7 @@ const multerS3 = require("multer-s3");
 const multer = require("multer");
 const path = require("path");
 const MongoStore = require("connect-mongo");
+const Review = require("./models/review");
 const flash = require("connect-flash");
 const connectDB = require("./config/db");
 // const pups = require(__dirname + "/data.js");
@@ -136,6 +137,25 @@ app.get("/available-puppies", async (req, res)=>{
   }
 
 });
+
+app.post("/testimonials", upload.single("photo"), async(req, res)=>{
+  let review;
+  try {
+    review = req.body;
+    if(req.file){
+      review.photo = req.file.location;
+    }
+    await Review.create(review);
+    req.flash("success", "Your review was sent successfully!");
+    res.redirect("/testimonials");
+    
+  } catch (error) {
+    req.flash("error", "Oops! Your review could not be sent, please try again later.");
+    res.redirect("/testimonials");
+    console.log(error)
+  }
+
+})
 
 app.post("/uploads", upload.single("photo"), ensureAuth, async (req, res) => {
   let post;
@@ -268,7 +288,7 @@ app.post("/email", async function(req, res, next) {
 
 let port = process.env.PORT;
 if (port == null || port == "") {
-  port = 3000;
+  port = 8000;
 }
 app.listen(port, function() {
   console.log("Server has started sucessfully");

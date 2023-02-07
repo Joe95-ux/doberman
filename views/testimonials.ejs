@@ -7,6 +7,24 @@
             <span>/</span>
             <span class="current">Testimonials</span>
         </div>
+        <% if(messages){%>
+            <% if(messages.error){%>
+            <div class="flash-wrapper home-flash">
+                <div class="flash-message warning">
+                    <h5 class="flash-error"><%=messages.error[0]%> </h5>
+                </div>
+            </div>
+    
+            <%}%>
+                    <%if(messages.success){ %>
+            <div class="flash-wrapper home-flash">
+                <div class="flash-message success-info">
+                    <h5 class="flash-success"><%=messages.success[0]%></h5>
+                </div>
+            </div>
+    
+            <% } %>
+            <% } %>
         <h2 class="catalog-title">Trust Our Customers</h2>
         
       </div>
@@ -111,6 +129,34 @@
         
         
       </div>
+      <div class="contact-inquiry-form testimonial-form" style="margin-top: 2rem;">
+        <h2 class="catalog-title" style="font-size: 1.5rem;">Leave Us a Review </h2>
+        <form class="footer-form" action="/testimonials" method="post" enctype="multipart/form-data">
+            <div class="names">
+                <div class="firstname">
+                    <label for="fist-name">Your name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="lastname">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="optional" >
+                </div>
+            </div>
+            <div class="input-field">
+                <label for="email">Photo</label>
+                <input type="file" id="avatar" name="photo">
+            </div>
+            
+            <div class="input-field" style="margin-top: 1rem;">
+                <textarea name="message" id="message" cols="5" rows="4"
+                    placeholder="write a review"
+                    required></textarea>
+            </div>
+            <button type="submit" class="find-btn finish">Submit</button>
+        </form>
+
+
+    </div>
     </div>
   
   

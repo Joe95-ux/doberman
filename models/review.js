@@ -7,10 +7,10 @@ const ReviewSchema = new mongoose.Schema({
     email:{
         type:String
     },
-    avatar:{
+    photo:{
         type:String
     },
-    text:{
+    message:{
         type: String
     }
 });
