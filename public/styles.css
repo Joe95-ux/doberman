@@ -633,6 +633,10 @@ img{
 .about-puppy {
   padding: 0 3%;
 }
+.home-price{
+  color: var(--primaryColor);
+  font-size: 16px;
+}
 
 a.buy-me {
   position: absolute;

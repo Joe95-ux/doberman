@@ -23,7 +23,7 @@
             <a class="buy-me" type="button" href="/puppies/<%=allPuppies[i]._id%>"><i class="fas fa-paw"></i>Buy me</a>
           </div>
           <div class="about-puppy">
-            <h3 class="name"><%= allPuppies[i].name %></h3>
+            <h3 class="name"><%= allPuppies[i].name %> <span class="home-price">[$<%= allPuppies[i].price %>]</span></h3>
             <hr class="product-rule" />
             <h4 class="description">
               <span><%= allPuppies[i].sex %>, </span><%= allPuppies[i].age %> old
