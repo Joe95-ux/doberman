@@ -887,19 +887,21 @@ a.buy-me {
 }
 
 .purchase-btns button:first-child {
-  background-color: inherit;
-  color: var(--mainBlack);
-  border: 1px solid var(--primaryColor);
+  background-color: var(--primaryColor);
+  color: var(--mainWhite);
 }
 
 .purchase-btns button:first-child:hover {
-  color: var(--primaryColor);
+  color: var(--mainBlack);
+  background-color: transparent;
+  border: 1px solid var(--primaryColor);
 }
 
 .purchase-btns a.purchase-btn {
-  background-color: var(--primaryColor);
-  color: var(--mainWhite);
+  background-color: inherit;
+  color: var(--mainBlack);
   text-decoration: none;
+  border: 1px solid var(--primaryColor);
 }
 
 .purchase-btns a.purchase-btn:hover {
