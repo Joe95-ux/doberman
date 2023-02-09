@@ -22,7 +22,8 @@ async function mainMail(email, subject, fname, lname, phone, state, text) {
     subject: subject,
     html: `You got a message from
     Email: ${email}
-    name: ${fname} ${lname}
+    name: ${fname}
+    puppy: ${lname}
     phone: ${phone}
     state: ${state}
     message: ${text}
