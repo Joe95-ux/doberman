@@ -8,7 +8,11 @@ const pupsSchema = new mongoose.Schema({
     vaccination: String,
     price: String,
     description:String,
-    rating:Number
+    rating:Number,
+    category: {
+      type: String,
+      default: 'Dobberman'
+    }
   });
 
   module.exports = mongoose.model("Pup", pupsSchema);
